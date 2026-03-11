@@ -47,7 +47,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ===== JUDUL =====
-st.markdown('<div class="main-title">🦜BirdVision: Aplikasi Identifikasi Spesies Burung</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-title">🦜BirdVision</div>', unsafe_allow_html=True)
 
 # ===== TABS =====
 tab1, tab3, tab4 = st.tabs(["Home", "Education", "Prediction"])
@@ -61,5 +61,6 @@ with tab3:
 
 with tab4:
     prediction.show()
+
 
 
