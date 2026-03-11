@@ -28,7 +28,7 @@ importlib_metadata==8.7.1
 Jinja2==3.1.6
 jsonschema==4.26.0
 jsonschema-specifications==2025.9.1
-keras==2.10.0
+keras==2.12.0
 Keras-Preprocessing==1.1.2
 kiwisolver==1.5.0
 libclang==18.1.1
@@ -87,6 +87,7 @@ watchdog==6.0.0
 Werkzeug==3.1.6
 wrapt==2.1.2
 zipp==3.23.0
+
 
 
 
