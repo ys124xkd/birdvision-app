@@ -46,7 +46,6 @@ opt_einsum==3.4.0
 packaging==26.0
 pandas==2.3.3
 pillow==12.1.1
-protobuf==3.19.6
 pyarrow==23.0.1
 pyasn1==0.6.2
 pyasn1_modules==0.4.2
@@ -87,6 +86,7 @@ watchdog==6.0.0
 Werkzeug==3.1.6
 wrapt==2.1.2
 zipp==3.23.0
+
 
 
 
