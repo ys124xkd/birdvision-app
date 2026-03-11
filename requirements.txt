@@ -60,7 +60,6 @@ validators==0.35.0
 tzlocal==5.3.1
 
 # Utilities / security
-cffi==1.15.1
 cryptography==46.0.5
 pycparser==2.21
 importlib_metadata==8.7.1
