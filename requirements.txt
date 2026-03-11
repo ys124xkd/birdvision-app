@@ -3,8 +3,8 @@ tensorflow==2.12.0
 keras==2.12.0
 tensorflow-estimator==2.12.0
 tensorboard==2.12.0
-tensorboard-data-server==0.12.0
 tensorboard-plugin-wit==1.8.1
+# biarkan pip resolve versi tensorboard-data-server yang kompatibel
 tensorflow-io-gcs-filesystem==0.31.0
 wrapt==1.14.1
 gast==0.4.0
@@ -60,9 +60,9 @@ validators==0.35.0
 tzlocal==5.3.1
 
 # Utilities / security
-cffi==2.0.0
+cffi==1.15.1
 cryptography==46.0.5
-pycparser==3.0
+pycparser==2.21
 importlib_metadata==8.7.1
 zipp==3.23.0
 toml==0.10.2
