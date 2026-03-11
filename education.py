@@ -79,7 +79,6 @@ def show():
     .stMarkdown h3 {
         color: #e85d04 !important;
         margin-top: 10px;
-        text-align: center;
     }
     /* Paragraf */
     .stMarkdown p {
@@ -97,3 +96,4 @@ def show():
     }
     </style>
     """, unsafe_allow_html=True)
+
