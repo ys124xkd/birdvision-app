@@ -1,8 +1,24 @@
 import streamlit as st
-import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
+from PIL import Image
 import os
+import requests
+from io import BytesIO
+
+def load_image(img_path):
+    """
+    Load image dari path lokal atau URL. 
+    Return None jika gagal load.
+    """
+    try:
+        if img_path.startswith("http"):
+            response = requests.get(img_path)
+            img = Image.open(BytesIO(response.content))
+        else:
+            img = Image.open(img_path)
+        return img
+    except Exception as e:
+        st.warning(f"⚠️ Tidak bisa memuat gambar: {img_path}")
+        return None
 
 def show():
     # ============================================================
@@ -28,142 +44,56 @@ def show():
     """)
 
     # ============================================================
-    # 🔹 Layout kolom 1 - 3 burung pertama
+    # 🔹 List burung
     # ============================================================
-    col1, col2, col3 = st.columns(3)
-
-    # ============================================================
-    # 🟡 American Goldfinch
-    # ============================================================
-    with col1:
-        st.image("assets/american_goldfinch.jpeg", width=250)
-        st.markdown("""
-        ### 💛 American Goldfinch (*Spinus tristis*)
-        American Goldfinch merupakan burung penyanyi kecil dari keluarga *Fringillidae* 
-        yang tersebar luas di Amerika Utara, mulai dari Kanada hingga Meksiko.  
-        Burung jantan dikenal karena warna kuning cerahnya yang mencolok dengan kontras hitam 
-        pada sayap dan kepala. Warna ini akan memudar menjadi kusam saat musim dingin, 
-        sementara betina memiliki warna zaitun kekuningan sepanjang tahun.
-
-        Mereka beradaptasi dengan baik di area terbuka seperti padang rumput, 
-        kebun bunga matahari, dan lahan pertanian. Burung ini sepenuhnya *granivora* (pemakan biji),
-        dengan makanan utama berupa biji tanaman thistle, aster, dan bunga matahari.  
-        Paruhnya yang kecil dan runcing memungkinkan mereka mengupas biji dengan efisien.
-
-        Uniknya, American Goldfinch adalah salah satu dari sedikit burung 
-        yang bersarang di akhir musim panas, menunggu hingga biji-bijian melimpah.  
-        Dalam ekosistem, mereka membantu penyebaran benih tanaman liar dan menjadi indikator kesehatan lingkungan.  
-        Meskipun populasinya stabil, hilangnya habitat alami tetap menjadi ancaman di beberapa daerah.
-        """)
+    birds = [
+        {"img": "assets/american_goldfinch.jpeg", "emoji": "💛", "name": "American Goldfinch (*Spinus tristis*)", "desc": """American Goldfinch merupakan burung penyanyi kecil dari keluarga *Fringillidae* yang tersebar luas di Amerika Utara. Burung jantan dikenal karena warna kuning cerahnya yang mencolok dengan kontras hitam pada sayap dan kepala. Warna ini akan memudar menjadi kusam saat musim dingin, sementara betina memiliki warna zaitun kekuningan sepanjang tahun. Mereka beradaptasi dengan baik di area terbuka seperti padang rumput dan kebun bunga matahari. Populasi mereka stabil, meskipun hilangnya habitat tetap menjadi ancaman."""},
+        {"img": "assets/barn_owl.jpeg", "emoji": "🦉", "name": "Barn Owl (*Tyto alba*)", "desc": """Barn Owl adalah burung nokturnal dengan wajah berbentuk hati berwarna putih pucat, sayap panjang, dan mata hitam besar yang beradaptasi sempurna untuk penglihatan malam. Mereka memiliki pendengaran sangat sensitif dan terbang senyap saat berburu. Sarangnya ditemukan di bangunan tua, menara gereja, gua, atau lubang pohon besar. Populasi terancam akibat hilangnya habitat dan penggunaan pestisida."""},
+        {"img": "assets/Carmine_Bee_eater.jpeg", "emoji": "❤️", "name": "Carmine Bee-eater (*Merops nubicus*)", "desc": """Carmine Bee-eater memiliki bulu merah muda cerah dan kepala biru muda. Hidup di savana dan tepi sungai Afrika sub-Sahara. Burung ini menangkap lebah dan serangga di udara, menepuk lebah di permukaan keras untuk menghilangkan sengat. Hidup berkoloni besar dan membuat sarang berupa terowongan di tebing pasir."""},
+        {"img": "assets/downy_woodpecker.jpeg", "emoji": "🪶", "name": "Downy Woodpecker (*Dryobates pubescens*)", "desc": """Downy Woodpecker adalah pelatuk terkecil di Amerika Utara. Bulu hitam-putihnya khas, jantan memiliki titik merah di belakang kepala. Paruh digunakan untuk mematuk batang pohon mencari serangga. Mereka membantu mengontrol hama dan membuat lubang pohon yang digunakan burung lain."""},
+        {"img": "assets/emperor_penguin.jpeg", "emoji": "🐧", "name": "Emperor Penguin (*Aptenodytes forsteri*)", "desc": """Emperor Penguin adalah pinguin terbesar di dunia dan berkembang biak di musim dingin Antartika. Betina bertelur satu butir dan jantan menjaga telur di atas kakinya selama dua bulan. Dapat menyelam hingga 500 meter dan menahan napas 20 menit. Populasi hampir terancam akibat pencairan es dan perubahan iklim."""},
+        {"img": "assets/flamingo.jpeg", "emoji": "🦩", "name": "Flamingo (*Phoenicopterus roseus*)", "desc": """Flamingo berwarna merah muda dengan leher panjang dan kaki ramping. Hidup di danau garam dan rawa dangkal. Warna berasal dari pigmen karotenoid pada udang kecil dan alga yang mereka makan. Paruhnya sebagai saringan alami. Hidup berkoloni besar dan berperan menjaga kualitas air dan keseimbangan ekosistem."""}
+    ]
 
     # ============================================================
-    # 🦉 Barn Owl
+    # 🔹 Tampilkan 2 baris x 3 kolom
     # ============================================================
-    with col2:
-        st.image("assets/barn_owl.jpeg", width=250)
-        st.markdown("""
-        ### 🦉 Barn Owl (*Tyto alba*)
-        Barn Owl adalah burung nokturnal dari keluarga *Tytonidae* yang tersebar di hampir seluruh dunia, 
-        menjadikannya salah satu burung hantu dengan persebaran terluas.  
-        Ciri khasnya adalah wajah berbentuk hati berwarna putih pucat, sayap panjang, 
-        dan mata hitam besar yang beradaptasi sempurna untuk penglihatan malam.
-
-        Mereka memiliki pendengaran sangat sensitif, mampu mendeteksi gerakan tikus hanya dari suara gesekan di rerumputan.  
-        Saat berburu, Barn Owl terbang dengan senyap berkat struktur bulu yang halus dan aerodinamis.  
-        Makanan utamanya meliputi tikus, burung kecil, dan serangga besar — satu ekor bisa memangsa hingga 1.000 tikus per tahun!  
-
-        Sarangnya sering ditemukan di bangunan tua, menara gereja, gua, atau lubang pohon besar.  
-        Dalam ekosistem, Barn Owl berfungsi sebagai pengendali alami populasi tikus.  
-        Namun, penggunaan pestisida dan hilangnya habitat menjadi ancaman utama bagi mereka.
-        """)
-
-    # ============================================================
-    # ❤️ Carmine Bee-eater
-    # ============================================================
-    with col3:
-        st.image("assets/Carmine_Bee_eater.jpeg", width=250)
-        st.markdown("""
-        ### ❤️ Carmine Bee-eater (*Merops nubicus*)
-        Carmine Bee-eater adalah burung paling berwarna dari keluarga *Meropidae*, 
-        dengan bulu merah muda cerah dan kepala biru muda.  
-        Mereka hidup di savana dan daerah berpasir di Afrika sub-Sahara, 
-        sering ditemukan di tepi sungai besar.
-
-        Burung ini pemburu udara yang hebat — mereka menangkap lebah, tawon, dan capung di udara.  
-        Sebelum memakan lebah, mereka menepuknya di permukaan keras untuk menghilangkan sengatnya terlebih dahulu.  
-        Mereka hidup berkoloni besar dan membuat sarang berupa terowongan di tebing pasir.  
-
-        Carmine Bee-eater memiliki peran penting dalam menjaga keseimbangan populasi serangga di alam liar.
-        """)
-
-    # ============================================================
-    # 🔹 Layout kolom 2 - 3 burung berikutnya
-    # ============================================================
-    col4, col5, col6 = st.columns(3)
-
-    # ============================================================
-    # 🪶 Downy Woodpecker
-    # ============================================================
-    with col4:
-        st.image("assets/downy_woodpecker.jpeg", width=250)
-        st.markdown("""
-        ### 🪶 Downy Woodpecker (*Dryobates pubescens*)
-        Downy Woodpecker merupakan spesies pelatuk terkecil di Amerika Utara (14–17 cm).  
-        Bulu hitam-putihnya khas, dengan jantan memiliki titik merah di bagian belakang kepala.  
-        Paruhnya digunakan untuk mematuk batang pohon mencari serangga di bawah kulit kayu.
-
-        Mereka menghuni hutan gugur, taman kota, dan area dengan banyak pohon tua.  
-        Downy Woodpecker membantu mengontrol hama dan menciptakan lubang pohon 
-        yang digunakan burung lain untuk bersarang.  
-        Populasi mereka relatif stabil dan beradaptasi baik terhadap lingkungan manusia.
-        """)
-
-    # ============================================================
-    # 🐧 Emperor Penguin
-    # ============================================================
-    with col5:
-        st.image("assets/emperor_penguin.jpeg", width=250)
-        st.markdown("""
-        ### 🐧 Emperor Penguin (*Aptenodytes forsteri*)
-        Emperor Penguin adalah spesies pinguin terbesar di dunia dan satu-satunya 
-        yang berkembang biak di tengah musim dingin Antartika.  
-        Mereka bisa mencapai tinggi 120 cm dan berat hingga 40 kg.  
-
-        Saat musim kawin, betina bertelur satu butir lalu meninggalkannya kepada jantan, 
-        yang menjaga telur di atas kakinya selama dua bulan tanpa makan.  
-        Emperor Penguin mampu menyelam hingga kedalaman 500 meter dan menahan napas selama 20 menit.  
-        Populasinya termasuk kategori “Hampir Terancam” akibat pencairan es dan perubahan iklim.
-        """)
-
-    # ============================================================
-    # 🦩 Flamingo
-    # ============================================================
-    with col6:
-        st.image("assets/flamingo.jpeg", width=250)
-        st.markdown("""
-        ### 🦩 Flamingo (*Phoenicopterus roseus*)
-        Flamingo adalah burung berwarna merah muda dengan leher panjang dan kaki ramping.  
-        Mereka hidup di danau garam dan rawa dangkal di Afrika, Asia Selatan, dan Eropa.  
-        Warna khas mereka berasal dari pigmen *karotenoid* pada udang kecil dan alga yang mereka makan.
-
-        Paruhnya berfungsi sebagai saringan alami untuk menyaring air berlumpur dan mengambil plankton.  
-        Flamingo hidup berkoloni besar hingga puluhan ribu individu dan memiliki perilaku sosial tinggi.  
-        Mereka berperan menjaga kualitas air dan keseimbangan ekosistem perairan dangkal.
-        """)
+    for i in range(0, len(birds), 3):
+        cols = st.columns(3, gap="large")
+        for col, bird in zip(cols, birds[i:i+3]):
+            with col:
+                img = load_image(bird["img"])
+                if img:
+                    st.image(img, width=250)
+                st.markdown(
+                    f"### {bird['emoji']} {bird['name']}\n{bird['desc']}",
+                    unsafe_allow_html=True
+                )
 
     # ============================================================
     # 🎨 CSS Styling
     # ============================================================
     st.markdown("""
     <style>
+    /* Heading h3 */
     .stMarkdown h3 {
-        color: #e85d04;
-        margin-top: 15px;
+        color: #e85d04 !important;
+        margin-top: 10px;
+        text-align: center;
     }
+    /* Paragraf */
     .stMarkdown p {
-        text-align: justify;
-        font-size: 15px;
-        line-height: 1.6;
+        text-align: justify !important;
+        font-size: 15px !important;
+        line-height: 1.6 !important;
+    }
+    /* Responsif untuk mobile */
+    @media (max-width: 768px) {
+        div[data-testid="column"] {
+            width: 100% !important;
+            display: block !important;
+            margin-bottom: 1rem !important;
+        }
     }
     </style>
     """, unsafe_allow_html=True)
