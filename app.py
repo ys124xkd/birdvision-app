@@ -3,7 +3,7 @@ import home
 import education
 import prediction
 
-st.set_page_config(page_title="Aplikasi Burung", layout="wide")
+st.set_page_config(page_title="Bird-Vision", layout="wide")
 
 # ===== CSS RESPONSIVE GLOBAL =====
 st.markdown("""
@@ -61,4 +61,5 @@ with tab3:
 
 with tab4:
     prediction.show()
+
 
