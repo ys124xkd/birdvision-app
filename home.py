@@ -1,4 +1,23 @@
 import streamlit as st
+from PIL import Image
+import os
+import requests
+from io import BytesIO
+
+def load_image(img_path):
+    """
+    Load image dari path lokal atau URL.
+    """
+    try:
+        if img_path.startswith("http"):
+            response = requests.get(img_path)
+            img = Image.open(BytesIO(response.content))
+        else:
+            img = Image.open(img_path)
+        return img
+    except Exception as e:
+        st.warning(f"⚠️ Tidak bisa memuat gambar: {img_path}")
+        return None
 
 def show():
     # ===== HEADER UTAMA =====
@@ -41,7 +60,7 @@ def show():
         /* Card fitur utama – warna putih */
         .feature-card {
             background-color: #ffffff !important;
-            color: #000000 !important;   /* 🔥 Fix utama: teks jadi hitam */
+            color: #000000 !important;   /* teks hitam */
             border-radius: 12px;
             padding: 1rem;
             margin-bottom: 1rem;
@@ -102,7 +121,9 @@ def show():
         cols = st.columns(3, gap="large")
         for col, bird in zip(cols, birds[i:i+3]):
             with col:
-                st.image(bird["img"], width=250) 
+                img = load_image(bird["img"])
+                if img:
+                    st.image(img, width=250)
                 st.markdown(
                     f"<p class='caption-text'>{bird['emoji']} <b>{bird['name']}</b> — {bird['desc']}</p>",
                     unsafe_allow_html=True
