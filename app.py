@@ -1,7 +1,6 @@
 import streamlit as st
 import home
 import education
-import about
 import prediction
 
 st.set_page_config(page_title="Aplikasi Burung", layout="wide")
@@ -62,3 +61,4 @@ with tab3:
 
 with tab4:
     prediction.show()
+
