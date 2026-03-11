@@ -10,7 +10,7 @@ import os
 # ============================================================
 @st.cache_resource
 def load_model():
-    model_path = "model_mobilenetv2_bird_augmented.h5"  # tetap file model internal
+    model_path = os.path.join(os.path.dirname(__file__), "model_mobilenetv2_bird_augmented.h5")  # tetap file model internal
     if not os.path.exists(model_path):
         st.error("❌ File prediksi tidak ditemukan! Pastikan file terkait ada di folder project.")
         st.stop()
@@ -118,3 +118,4 @@ def show():
 
     else:
         st.warning("⬆️ Silakan unggah satu atau beberapa gambar untuk memulai prediksi.")
+
