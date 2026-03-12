@@ -11,6 +11,9 @@ Aplikasi ini mendukung edukasi, konservasi, dan penelitian terkait keanekaragama
 ### Halaman Utama
 ![Home Page](assets/home.png)
 
+### Education
+![Prediction Page](assets/education.png)
+
 ### Upload dan Prediksi Gambar
 ![Prediction Page](assets/prediction.png)
 
