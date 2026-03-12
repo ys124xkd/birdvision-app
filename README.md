@@ -9,13 +9,13 @@ Aplikasi ini mendukung edukasi, konservasi, dan penelitian terkait keanekaragama
 ## 🔹 Tampilan Aplikasi
 
 ### Halaman Utama
-![Home Page](images/home.png)
+![Home Page](assets/home.png)
 
 ### Upload dan Prediksi Gambar
-![Prediction Page](images/prediction.png)
+![Prediction Page](assets/prediction.png)
 
 ### Hasil Klasifikasi
-![Result Page](images/result.png)
+![Result Page](assets/result.png)
 
 ---
 
