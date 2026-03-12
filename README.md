@@ -6,6 +6,19 @@ Aplikasi ini mendukung edukasi, konservasi, dan penelitian terkait keanekaragama
 
 ---
 
+## 🔹 Tampilan Aplikasi
+
+### Halaman Utama
+![Home Page](images/home.png)
+
+### Upload dan Prediksi Gambar
+![Prediction Page](images/prediction.png)
+
+### Hasil Klasifikasi
+![Result Page](images/result.png)
+
+---
+
 ## 🔹 Fitur
 - Prediksi jenis burung dari gambar secara otomatis.
 - Mendukung 6 spesies burung:
