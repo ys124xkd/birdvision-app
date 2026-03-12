@@ -29,14 +29,14 @@ Evaluasi model dilakukan untuk mengetahui performa model **MobileNetV2** dalam m
 ### Kurva Accuracy
 Kurva accuracy menunjukkan perkembangan nilai akurasi selama proses training dan validation pada setiap epoch.
 
-![Accuracy Curve](images/accuracy_curve.png)
+![Accuracy Curve](assets/accuracy_curve.png)
 
 ---
 
 ### Kurva Loss
 Kurva loss digunakan untuk melihat bagaimana model meminimalkan kesalahan selama proses training dan validation.
 
-![Loss Curve](images/loss_curve.png)
+![Loss Curve](assets/loss_curve.png)
 
 ---
 
@@ -50,14 +50,14 @@ Beberapa metrik evaluasi yang digunakan dalam penelitian ini meliputi:
 
 Metric ini digunakan untuk mengukur seberapa baik model dalam melakukan klasifikasi terhadap masing-masing kelas burung.
 
-![Performance Metrics](images/performance_metrics.png)
+![Performance Metrics](assets/metrik_performance.png)
 
 ---
 
 ### Confusion Matrix
 Confusion matrix digunakan untuk menganalisis hasil prediksi model terhadap setiap kelas burung, sehingga dapat diketahui jumlah prediksi yang benar maupun kesalahan klasifikasi.
 
-![Confusion Matrix](images/confusion_matrix.png)
+![Confusion Matrix](assets/confusion_matrix.png)
 
 Confusion matrix membantu dalam memahami distribusi kesalahan prediksi antar kelas serta mengevaluasi kemampuan model dalam membedakan setiap spesies burung.
 
