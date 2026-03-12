@@ -22,6 +22,47 @@ Aplikasi ini mendukung edukasi, konservasi, dan penelitian terkait keanekaragama
 
 ---
 
+## 📊 Evaluasi Model
+
+Evaluasi model dilakukan untuk mengetahui performa model **MobileNetV2** dalam melakukan klasifikasi citra burung. Proses evaluasi meliputi analisis **akurasi training dan validation**, **kurva loss**, serta **confusion matrix** untuk melihat distribusi prediksi pada setiap kelas.
+
+### Kurva Accuracy
+Kurva accuracy menunjukkan perkembangan nilai akurasi selama proses training dan validation pada setiap epoch.
+
+![Accuracy Curve](images/accuracy_curve.png)
+
+---
+
+### Kurva Loss
+Kurva loss digunakan untuk melihat bagaimana model meminimalkan kesalahan selama proses training dan validation.
+
+![Loss Curve](images/loss_curve.png)
+
+---
+
+### Metric Performa Model
+Beberapa metrik evaluasi yang digunakan dalam penelitian ini meliputi:
+
+- **Accuracy**
+- **Precision**
+- **Recall**
+- **F1-score**
+
+Metric ini digunakan untuk mengukur seberapa baik model dalam melakukan klasifikasi terhadap masing-masing kelas burung.
+
+![Performance Metrics](images/performance_metrics.png)
+
+---
+
+### Confusion Matrix
+Confusion matrix digunakan untuk menganalisis hasil prediksi model terhadap setiap kelas burung, sehingga dapat diketahui jumlah prediksi yang benar maupun kesalahan klasifikasi.
+
+![Confusion Matrix](images/confusion_matrix.png)
+
+Confusion matrix membantu dalam memahami distribusi kesalahan prediksi antar kelas serta mengevaluasi kemampuan model dalam membedakan setiap spesies burung.
+
+---
+
 ## 🔹 Fitur
 - Prediksi jenis burung dari gambar secara otomatis.
 - Mendukung 6 spesies burung:
