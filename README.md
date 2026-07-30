@@ -1,129 +1,49 @@
-# BirdVision-App 🐦
+# 🐦 BirdVision App
 
-**BirdVision-App** adalah aplikasi web berbasis **Computer Vision** untuk mengenali dan mengklasifikasikan jenis burung secara otomatis menggunakan **MobileNetV2**. Sistem ini dikembangkan menggunakan **Python** dan **Streamlit**, sehingga mudah digunakan oleh pengguna awam maupun peneliti pemula.
+BirdVision App is a web-based **Computer Vision** application developed using **Python** and **Streamlit** to automatically identify and classify bird species from images. The application utilizes the **MobileNetV2** deep learning architecture through transfer learning to provide fast and accurate bird species classification.
 
-Aplikasi ini mendukung edukasi, konservasi, dan penelitian terkait keanekaragaman burung di Indonesia.
-
----
-
-## 🔹 Tampilan Aplikasi
-
-### Halaman Utama
-![Home Page](assets/home.png)
-
-### Education
-![Prediction Page](assets/education.png)
-
-### Upload dan Prediksi Gambar
-![Prediction Page](assets/prediction.png)
-
-### Hasil Klasifikasi
-![Result Page](assets/result.png)
+The project supports educational purposes, biodiversity conservation, and introductory research in bird species recognition.
 
 ---
 
-## 📊 Evaluasi Model
+## 📖 Overview
 
-Evaluasi model dilakukan untuk mengetahui performa model **MobileNetV2** dalam melakukan klasifikasi citra burung. Proses evaluasi meliputi analisis **akurasi training dan validation**, **kurva loss**, serta **confusion matrix** untuk melihat distribusi prediksi pada setiap kelas.
+Bird species identification plays an important role in biodiversity monitoring, conservation, and wildlife research. However, manual identification requires expertise and can be time-consuming.
 
-### Kurva Accuracy
-Kurva accuracy menunjukkan perkembangan nilai akurasi selama proses training dan validation pada setiap epoch.
-
-![Accuracy Curve](assets/accuracy_curve.png)
+BirdVision App provides an interactive web interface where users can upload bird images and receive instant predictions using a trained deep learning model. The system also provides educational information about the supported bird species.
 
 ---
 
-### Kurva Loss
-Kurva loss digunakan untuk melihat bagaimana model meminimalkan kesalahan selama proses training dan validation.
+## ✨ Features
 
-![Loss Curve](assets/loss_curve.png)
-
----
-
-### Metric Performa Model
-Beberapa metrik evaluasi yang digunakan dalam penelitian ini meliputi:
-
-- **Accuracy**
-- **Precision**
-- **Recall**
-- **F1-score**
-
-Metric ini digunakan untuk mengukur seberapa baik model dalam melakukan klasifikasi terhadap masing-masing kelas burung.
-
-![Performance Metrics](assets/metrik_performance.png)
+- Upload bird images for automatic classification
+- Predict bird species using a deep learning model
+- Display prediction confidence scores
+- Educational page introducing supported bird species
+- Interactive web interface built with Streamlit
+- Support for six bird species classification
 
 ---
 
-### Confusion Matrix
-Confusion matrix digunakan untuk menganalisis hasil prediksi model terhadap setiap kelas burung, sehingga dapat diketahui jumlah prediksi yang benar maupun kesalahan klasifikasi.
+## 🤖 Deep Learning Algorithm
 
-![Confusion Matrix](assets/confusion_matrix.png)
+This project implements **Transfer Learning** using the **MobileNetV2** architecture, which is pre-trained on the ImageNet dataset and fine-tuned for bird species classification.
 
-Confusion matrix membantu dalam memahami distribusi kesalahan prediksi antar kelas serta mengevaluasi kemampuan model dalam membedakan setiap spesies burung.
+The classification model recognizes the following six bird species:
 
----
+- American Goldfinch
+- Barn Owl
+- Carmine Bee-eater
+- Downy Woodpecker
+- Emperor Penguin
+- Flamingo
 
-## 🔹 Fitur
-- Prediksi jenis burung dari gambar secara otomatis.
-- Mendukung 6 spesies burung:
-  - **American Goldfinch**
-  - **Barn Owl**
-  - **Carmine Bee-eater**
-  - **Downy Woodpecker**
-  - **Emperor Penguin**
-  - **Flamingo**
-- Menampilkan tingkat akurasi prediksi (*confidence score*).
-- Antarmuka pengguna interaktif dan mudah digunakan.
-- Sistem berbasis web, dapat dijalankan secara lokal atau online.
+MobileNetV2 was selected because it provides a good balance between classification accuracy, computational efficiency, and lightweight deployment for web applications.
 
 ---
 
-## 🌐 Demo
-Coba aplikasi secara langsung di:  
-[BirdVision-App Online](https://birdvision-app.streamlit.app/)
+## 🛠️ Technologies
 
----
-
-## 🗂️ Dataset
-Dataset yang digunakan dalam penelitian ini berasal dari platform **Kaggle** dengan judul **Bird Species Image Classification**. Dataset tersebut berisi berbagai citra burung yang digunakan untuk proses pelatihan dan pengujian model klasifikasi.
-
-Dataset dapat diakses melalui tautan berikut:  
-https://www.kaggle.com/datasets/rahmasleam/bird-speciees-dataset
-
-Dalam penelitian ini, hanya **6 jenis burung** yang digunakan sebagai kelas klasifikasi, yaitu:
-
-- American Goldfinch  
-- Barn Owl  
-- Carmine Bee-eater  
-- Downy Woodpecker  
-- Emperor Penguin  
-- Flamingo  
-
-Dataset kemudian diproses melalui beberapa tahapan, yaitu **preprocessing data**, **training model**, dan **evaluasi model** menggunakan arsitektur **MobileNetV2**.
-
----
-
-## 🛠️ Instalasi
-
-### 1. Clone repository
-```bash
-git clone https://github.com/username/birdvision-app.git
-cd birdvision-app
-```
-
-### 2. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Jalankan aplikasi
-```bash
-streamlit run app.py
-```
-
----
-
-## ⚙️ Teknologi yang Digunakan
 - Python
 - TensorFlow / Keras
 - MobileNetV2
@@ -133,13 +53,148 @@ streamlit run app.py
 
 ---
 
-## 📌 Tujuan Pengembangan
-Aplikasi ini dikembangkan untuk:
-- Membantu proses identifikasi burung secara otomatis.
-- Mendukung kegiatan edukasi dan penelitian di bidang **Computer Vision**.
-- Memberikan contoh implementasi **Deep Learning berbasis web** yang mudah digunakan.
+## 📂 Project Structure
+
+```text
+birdvision-app/
+│
+├── app.py
+├── README.md
+├── requirements.txt
+│
+├── assets/
+│   ├── home.png
+│   ├── education.png
+│   ├── prediction.png
+│   ├── result.png
+│   ├── accuracy_curve.png
+│   ├── loss_curve.png
+│   ├── metrik_performance.png
+│   └── confusion_matrix.png
+│
+├── model/
+├── dataset/
+└── ...
+```
 
 ---
 
-## 📄 Lisensi
-Proyek ini dikembangkan untuk tujuan **edukasi dan penelitian**.
+## 📊 Dataset
+
+This project uses the **Bird Species Image Classification** dataset from Kaggle.
+
+**Dataset Source**
+
+https://www.kaggle.com/datasets/rahmasleam/bird-speciees-dataset
+
+Although the original dataset contains many bird species, this project focuses on the following six classes:
+
+- American Goldfinch
+- Barn Owl
+- Carmine Bee-eater
+- Downy Woodpecker
+- Emperor Penguin
+- Flamingo
+
+The dataset was processed through data preprocessing, model training, and evaluation using the MobileNetV2 architecture.
+
+---
+
+## 📈 Model Evaluation
+
+The MobileNetV2 model was evaluated using several performance metrics to measure its classification capability.
+
+Evaluation metrics include:
+
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- Confusion Matrix
+
+### Accuracy Curve
+
+The accuracy curve illustrates the training and validation accuracy during each training epoch.
+
+![Accuracy Curve](assets/accuracy_curve.png)
+
+---
+
+### Loss Curve
+
+The loss curve shows how the model minimized prediction errors throughout the training process.
+
+![Loss Curve](assets/loss_curve.png)
+
+---
+
+### Performance Metrics
+
+The overall classification performance is summarized using Accuracy, Precision, Recall, and F1-Score.
+
+![Performance Metrics](assets/metrik_performance.png)
+
+---
+
+### Confusion Matrix
+
+The confusion matrix visualizes the prediction results for each bird species, helping identify correctly classified samples and misclassification patterns.
+
+![Confusion Matrix](assets/confusion_matrix.png)
+
+---
+
+## 📸 Application Preview
+
+### Home Page
+
+![Home Page](assets/home.png)
+
+### Education Page
+
+![Education Page](assets/education.png)
+
+### Prediction Page
+
+![Prediction Page](assets/prediction.png)
+
+### Classification Result
+
+![Classification Result](assets/result.png)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/username/birdvision-app.git
+cd birdvision-app
+```
+
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run the application
+
+```bash
+streamlit run app.py
+```
+
+Open your browser and access the local Streamlit URL displayed in the terminal.
+
+---
+
+## 🎯 Project Objective
+
+The objective of this project is to develop a web-based bird species classification system using transfer learning with MobileNetV2. The application aims to assist users in automatically identifying bird species while demonstrating the practical implementation of deep learning and computer vision techniques for image classification.
+
+---
+
+## 📄 License
+
+This project was developed for educational purposes and portfolio demonstration.
